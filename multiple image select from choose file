@@ -1,0 +1,48 @@
+import React, { Component } from "react";
+
+export class MultiSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedFiles: [],
+    };
+  }
+  
+   hanChange = (e) => {
+    console.log(e.target.files[0]);
+    this.state.selectedFiles.push({
+      preview: URL.createObjectURL(e.target.files[0]),
+    });
+    this.setState({});
+    setTimeout(() => {
+      console.log(this.state.selectFiles);
+    }, 3000);
+  };
+  
+  render() {
+    return (
+      <div>
+        <input
+          type="file"
+          multiple
+          onChange={(e) => {
+            this.hanChange(e);
+          }}
+        />
+        <br />
+        <br />
+
+        <div className="form-group multi-preview">
+          {this.state.selectedFiles.length > 0 &&
+            this.state.selectedFiles.map((item, index) => {
+              return (
+                <img src={item.preview} alt="..." height="50px" width="50px" />
+              );
+            })}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default MultiSelect;
