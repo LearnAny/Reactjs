@@ -1,0 +1,32 @@
+import React, { Component } from "react";
+import Select from "react-select";
+
+ constructor(props) {
+    super(props);
+    this.state = {
+     selectedValue: null,
+    }
+ }
+ 
+  render() {
+    const multiselect = [
+      { value: "1", label: "India" },
+      { value: "2", label: "Bangladesh" },
+      { value: "3", label: "SriLanka" },
+      { value: "4", label: "USA" },
+    ];
+    return (
+      <div>
+        <Select
+          isMulti
+          placeholder="Choose Country...."
+          value={this.selectedValue}
+          options={multiselect}
+          onChange={(selectedValue) => {
+            this.setState({ selectedValue });
+            console.log("Show Value", selectedValue);
+          }}
+        />
+   );
+  }
+ }
