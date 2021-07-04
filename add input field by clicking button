@@ -1,0 +1,82 @@
+import React, { Component } from "react";
+
+export class Form1 extends Component {
+
+constructor(props) {
+    super(props);
+    this.state = {
+      staffing: [
+        {
+          text: "",
+          email: "",
+        },
+      ],
+    };
+  }
+   render() {
+    return (
+     <h3>Add field</h3>
+        <div>
+          <input
+            type="button"
+            value="Add"
+            onClick={() => {
+              this.state.staffing.push({
+                text: "",
+                email: "",
+              });
+              this.setState({});
+              console.log(this.state.staffing);
+            }}
+          />
+        </div>
+        <br />
+        {this.state.staffing.map((item, index) => {
+          return (
+          <>
+          <div key={index}>
+            text:
+            <input
+              type="text"
+              value={this.state.staffing[index].text}
+              onChange={(val) => {
+                console.log(val.target.value);
+                this.state.staffing[index].text = val.target.value;
+                this.setState({});
+              }}
+            />
+            email:
+            <input
+              type="email"
+              value={this.state.staffing[index].email}
+              onChange={(val) => {
+                this.state.staffing[index].email = val.target.value;
+                this.setState({});
+              }}
+            />
+          </div>
+
+          <div>
+          {index === 0 ? null : (
+           <input
+           type="button"
+           value="Delete"
+           onClick={() => {
+            if (index > 0) {
+              console.log(item.id);
+
+              this.state.staffing.pop(index);
+              this.setState({});
+            }
+           }}
+         />
+          )}
+          </div>
+          </>
+        )})}
+     
+    );
+  }
+}
+
+export default Form1;
