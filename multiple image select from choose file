@@ -15,7 +15,7 @@ export class MultiSelect extends Component {
     });
     this.setState({});
     setTimeout(() => {
-      console.log(this.state.selectFiles);
+      console.log(this.state.selectedFiles);
     }, 3000);
   };
   
