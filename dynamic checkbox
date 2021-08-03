@@ -1,0 +1,58 @@
+ const [checkArr, setcheckArr] = useState([]);
+ 
+ const handleCheck = async (e) => {
+    console.log(e.target.name);
+    if (e.target.checked === true) {
+      checkArr.push(e.target.value);
+      console.log("checkarr", checkArr);
+    } else {
+      let deleteIndex = checkArr.indexOf(e.target.value);
+      if (deleteIndex > -1) {
+        checkArr.splice(deleteIndex, 1);
+      }
+
+      console.log("checkarr", checkArr);
+    }
+  };
+  
+  <div>
+                <div className="form-check form-check-inline my-2 mr-4">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    name="check_shop"
+                    value="shop"
+                    onChange={handleCheck}
+                  />
+                  <label className="form-check-label" htmlFor="inlineCheckbox1">
+                    Shop
+                  </label>
+                </div>
+                <div className="form-check form-check-inline my-2 mr-4">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    name="check_favourite_item"
+                    value="favourite_item"
+                    onChange={handleCheck}
+                  />
+                  <label className="form-check-label" htmlFor="inlineCheckbox2">
+                    Favourite items
+                  </label>
+                </div>
+                <div className="form-check form-check-inline my-2">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    name="check_favourite_shop"
+                    value="favourite_shop"
+                    onChange={handleCheck}
+                  />
+                  <label className="form-check-label" htmlFor="inlineCheckbox3">
+                    Favourite shops
+                  </label>
+                </div>
+              </div>
