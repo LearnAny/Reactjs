@@ -1,0 +1,65 @@
+const [inputFields, setInputFields] = useState([{ highlight: "" }]);
+
+const handleChangeInput = (index, event) => {
+    const values = [...inputFields];
+    values[index][event.target.name] = event.target.value;
+    setInputFields(values);
+    console.log(inputFields);
+  };
+  
+   const handleAddFields = () => {
+    setInputFields([...inputFields, { highlight: "" }]);
+  };
+  
+  const handleRemoveFields = (index) => {
+    const values = [...inputFields];
+
+    values.splice(index, 1);
+    setInputFields(values);
+  };
+  
+  <div className="form-group my-4">
+            <button
+              type="button"
+              className="btn preview_btn"
+              onClick={handleAddFields}
+            >
+              Highlights
+            </button>
+            <br />
+            <br />
+            {inputFields.map((inputField, index) => {
+              return (
+                <div key={index}>
+                  <div className="d-flex justify-content-between add-product-field my-3">
+                    <input
+                      type="text"
+                      name="highlight"
+                      className="form-control"
+                      placeholder="Add Highlights"
+                      value={inputField.highlight}
+                      onChange={(event) => handleChangeInput(index, event)}
+                    />
+                    {/* {index ? (
+                    <button
+                      type="button"
+                      className="btn preview_btn"
+                      onClick={() => handleRemoveFields(index)}
+                    >
+                      <i className="ri-close-line"></i>
+                      Remove
+                    </button>
+                  ) : null} */}
+                    {index ? (
+                      <span
+                        className="align-self-center"
+                        onClick={() => handleRemoveFields(index)}
+                      >
+                        <i className="far fa-times-circle text-muted"></i>
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
